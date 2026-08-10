@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cranial Index &amp; Cranial Vault Asymmetry Index Calculator Pro</title>
+    <meta name="description" content="Professional clinical calculator for Cranial Index (CI) and Cranial Vault Asymmetry Index (CVAI) in pediatric neurosurgery, craniofacial surgery, and radiology.">
+    <meta name="author" content="Dr G Narenthiran MB Ch FEBNS FRCS(SN)">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom Application CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- HEADER -->
+        <header class="app-header">
+            <div class="header-brand">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <div class="brand-titles">
+                    <h1>Cranial Index &amp; Cranial Vault Asymmetry Index Calculator Pro</h1>
+                    <p class="subtitle">Craniosynostosis &amp; Plagiocephaly Longitudinal Analytics (CI &amp; CVAI)</p>
+                    <p class="supervisor-line">
+                        <i class="fa-solid fa-user-doctor"></i> Supervising Developer: <strong>Dr G Narenthiran MB Ch FEBNS FRCS(SN)</strong> (<a href="mailto:g_narnethiran@hotmail.com">g_narnethiran@hotmail.com</a>) | Dedicated to my mother Mrs Nirmaladevy Ganesalingam BSc
+                    </p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="btn-sample-case" class="btn btn-secondary">
+                    <i class="fa-solid fa-vial"></i> Load Sample Case
+                </button>
+                <button id="btn-reset-all" class="btn btn-outline-danger">
+                    <i class="fa-solid fa-rotate-left"></i> Reset All
+                </button>
+                <button id="btn-print-report" class="btn btn-primary">
+                    <i class="fa-solid fa-print"></i> Print Active Report
+                </button>
+            </div>
+        </header>
+
+        <!-- DUAL-TAB NAVIGATION BAR -->
+        <nav class="tab-navigation">
+            <button class="nav-tab active" id="tab-btn-ci" data-tab="tab-ci">
+                <i class="fa-solid fa-head-side-virus"></i>
+                <span>Cranial Index (CI) Calculator</span>
+                <small>Scaphocephaly &amp; Brachycephaly</small>
+            </button>
+            <button class="nav-tab" id="tab-btn-cvai" data-tab="tab-cvai">
+                <i class="fa-solid fa-vector-square"></i>
+                <span>Cranial Vault Asymmetry Index (CVAI)</span>
+                <small>Plagiocephaly &amp; Asymmetry</small>
+            </button>
+        </nav>
+
+        <!-- COMMON PATIENT DEMOGRAPHICS BAR -->
+        <section class="patient-demographics-bar">
+            <div class="form-group">
+                <label for="patient-id"><i class="fa-solid fa-id-card"></i> Patient ID / MRN:</label>
+                <input type="text" id="patient-id" placeholder="e.g. CRN-90214">
+            </div>
+            <div class="form-group">
+                <label for="patient-name"><i class="fa-solid fa-user"></i> Patient Initials / Name:</label>
+                <input type="text" id="patient-name" placeholder="e.g. A.B. (Pediatric)">
+            </div>
+            <div class="form-group">
+                <label for="scan-modality"><i class="fa-solid fa-ruler-horizontal"></i> Measurement done on:</label>
+                <select id="scan-modality">
+                    <option value="Head measure">Head measure</option>
+                    <option value="CT head" selected>CT head</option>
+                    <option value="MRI head">MRI head</option>
+                    <option value="3D model of head">3D model of head</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="unit-select"><i class="fa-solid fa-ruler-combined"></i> Measurement Units:</label>
+                <select id="unit-select">
+                    <option value="mm">Millimeters (mm)</option>
+                    <option value="cm">Centimeters (cm)</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- TAB 1: CRANIAL INDEX (CI) CALCULATOR CONTENT -->
+        <div id="tab-ci" class="tab-content active">
+            <main class="main-content">
+                <!-- ANATOMY PANEL (CI) -->
+                <aside class="panel anatomy-panel">
+                    <div class="panel-header">
+                        <h2><i class="fa-solid fa-skull"></i> Anatomical Reference &amp; Landmarks (CI)</h2>
+                    </div>
+                    
+                    <div class="diagram-wrapper">
+                        <img src="cranial_diagram.jpg?v=3.0" alt="Cranial Index Diagram - Biparietal & Occipitofrontal Diameters" class="diagram-img">
+                    </div>
+
+                    <div class="formula-box">
+                        <h3><i class="fa-solid fa-calculator"></i> Formula &amp; Definition</h3>
+                        <div class="formula-math">
+                            $$\text{Cranial Index (CI)} = \frac{\text{Line A: Biparietal Diameter (BPD)}}{\text{Line B: Occipitofrontal Diameter (OFD)}}$$
+                        </div>
+                        <p class="formula-note">Expressed as a ratio (and percentage) formatted strictly to <strong>two decimal places</strong>.</p>
+                    </div>
+
+                    <div class="thresholds-box">
+                        <h3><i class="fa-solid fa-list-check"></i> Clinical Cut-off Thresholds</h3>
+                        <ul class="threshold-list">
+                            <li class="t-scapho">
+                                <span class="t-badge"><i class="fa-solid fa-arrows-left-right"></i> CI &lt; 0.75 (&lt; 75.00%)</span>
+                                <span class="t-desc">Dolichocephaly / Scaphocephaly (Sagittal Synostosis)</span>
+                            </li>
+                            <li class="t-normal">
+                                <span class="t-badge"><i class="fa-solid fa-check-double"></i> 0.75 - 0.85 (75 - 85%)</span>
+                                <span class="t-desc">Mesocephaly (Normal Cranial Vault Ratio)</span>
+                            </li>
+                            <li class="t-brachy">
+                                <span class="t-badge"><i class="fa-solid fa-arrows-up-down"></i> CI &gt; 0.85 (&gt; 85.00%)</span>
+                                <span class="t-desc">Brachycephaly (Coronal / Lambdoid Synostosis)</span>
+                            </li>
+                            <li class="t-severe">
+                                <span class="t-badge"><i class="fa-solid fa-triangle-exclamation"></i> CI &gt; 0.90 (&gt; 90.00%)</span>
+                                <span class="t-desc">Severe Brachycephaly / Oxycephaly</span>
+                            </li>
+                        </ul>
+                        <p class="clinical-variability-note">
+                            <i class="fa-solid fa-triangle-exclamation"></i> <strong>Clinical Note:</strong> Diagnosis is clinical. Threshold values provided can vary depending on the age, sex, and race/ethnicity of the child.
+                        </p>
+                    </div>
+                </aside>
+
+                <!-- CALCULATOR PANEL (CI) -->
+                <section class="panel calculator-panel">
+                    <div class="table-container">
+                        <div class="table-header-title">
+                            <h3><i class="fa-solid fa-timeline"></i> Longitudinal Cranial Index Measurements</h3>
+                            <span class="badge-total-rows">Total Scans: <strong id="ci-rows-count">5</strong></span>
+                        </div>
+
+                        <div class="table-scroll">
+                            <table class="evans-table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-tp">Scan #</th>
+                                        <th class="col-date">Date</th>
+                                        <th class="col-context">Context (Meta)</th>
+                                        <th class="col-measurement">Biparietal Diameter (BPD)</th>
+                                        <th class="col-measurement">Occipitofrontal Diameter (OFD)</th>
+                                        <th class="col-result">Cranial Index (CI)</th>
+                                        <th class="col-status">Classification</th>
+                                        <th class="col-action">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ci-table-body">
+                                    <!-- Dynamic Rows Generated via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="table-footer-controls">
+                            <button type="button" id="btn-add-ci-row" class="btn btn-add-tp">
+                                <i class="fa-solid fa-plus-circle"></i> Add Time Point
+                            </button>
+                            <span class="helper-text"><i class="fa-solid fa-circle-info"></i> Enter values into BPD and OFD. Calculations generate live with or without dates.</span>
+                        </div>
+                    </div>
+
+                    <!-- KPI SUMMARY CARDS (CI) -->
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <span class="kpi-title"><i class="fa-solid fa-hashtag"></i> Total Scans Computed</span>
+                            <span class="kpi-value" id="ci-kpi-count">0</span>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-title"><i class="fa-solid fa-chart-line"></i> Baseline Cranial Index</span>
+                            <span class="kpi-value" id="ci-kpi-baseline">--</span>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-title"><i class="fa-solid fa-flag-checkered"></i> Latest Cranial Index</span>
+                            <span class="kpi-value" id="ci-kpi-latest">--</span>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-title"><i class="fa-solid fa-arrow-trend-up"></i> Total Change (&Delta; CI)</span>
+                            <span class="kpi-value" id="ci-kpi-delta">--</span>
+                        </div>
+                    </div>
+
+                    <!-- LONGITUDINAL BAR CHART (CI) -->
+                    <div class="chart-section">
+                        <div class="chart-header">
+                            <h3><i class="fa-solid fa-chart-column"></i> Longitudinal Cranial Index Bar Graph</h3>
+                            <span class="chart-sub">Visualizing cranial ratio evolution over time &amp; treatment</span>
+                        </div>
+                        <div class="chart-body">
+                            <div id="ci-chart-placeholder" class="chart-placeholder">
+                                <i class="fa-solid fa-chart-bar placeholder-icon"></i>
+                                <p>Enter measurements into at least 1 time point row to generate the Cranial Index Bar Graph.</p>
+                            </div>
+                            <div id="ci-chart-container" class="chart-canvas-wrapper hidden">
+                                <canvas id="ciChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- TAB 2: CRANIAL VAULT ASYMMETRY INDEX (CVAI) CALCULATOR CONTENT -->
+        <div id="tab-cvai" class="tab-content">
+            <main class="main-content">
+                <!-- ANATOMY PANEL (CVAI) -->
+                <aside class="panel anatomy-panel">
+                    <div class="panel-header">
+                        <h2><i class="fa-solid fa-vector-square"></i> Diagonal Landmarks &amp; Obliques (CVAI)</h2>
+                    </div>
+                    
+                    <div class="diagram-wrapper">
+                        <img src="cvai_diagram.png?v=2.0" alt="CVAI Diagonal Measurement Vertex View - 30 Degree Obliques" class="diagram-img">
+                    </div>
+
+                    <!-- DENOMINATOR CONVENTION CONTEXT -->
+                    <div class="form-group denominator-select-box">
+                        <label for="cvai-denominator"><i class="fa-solid fa-divide"></i> CVAI Denominator Convention:</label>
+                        <select id="cvai-denominator">
+                            <option value="shorter" selected>Shorter diagonal diameter (Standard)</option>
+                            <option value="longer">Longer diagonal diameter (Alternative)</option>
+                        </select>
+                    </div>
+
+                    <div class="formula-box">
+                        <h3><i class="fa-solid fa-calculator"></i> Formula &amp; Definition</h3>
+                        <div class="formula-math" id="cvai-formula-display">
+                            $$\text{CVAI (\%)} = \frac{|\text{Longer} - \text{Shorter}|}{\text{Shorter Diagonal}} \times 100$$
+                        </div>
+                        <p class="formula-note">Diagonals taken at <strong>30&deg; to the midline</strong> (crossing at vault center). CVA is the absolute difference ($|A - B|$) in mm/cm.</p>
+                    </div>
+
+                    <div class="thresholds-box">
+                        <h3><i class="fa-solid fa-list-check"></i> Clinical Cut-off Thresholds (CVAI)</h3>
+                        <ul class="threshold-list">
+                            <li class="t-normal">
+                                <span class="t-badge"><i class="fa-solid fa-check-double"></i> CVAI &lt; 3.5%</span>
+                                <span class="t-desc">Normal Symmetry</span>
+                            </li>
+                            <li class="t-scapho">
+                                <span class="t-badge"><i class="fa-solid fa-circle-exclamation"></i> 3.5% - 6.25%</span>
+                                <span class="t-desc">Mild Plagiocephaly</span>
+                            </li>
+                            <li class="t-brachy">
+                                <span class="t-badge"><i class="fa-solid fa-triangle-exclamation"></i> 6.25% - 8.75%</span>
+                                <span class="t-desc">Moderate Plagiocephaly</span>
+                            </li>
+                            <li class="t-severe">
+                                <span class="t-badge"><i class="fa-solid fa-triangle-exclamation"></i> CVAI &gt; 8.75%</span>
+                                <span class="t-desc">Severe Plagiocephaly</span>
+                            </li>
+                        </ul>
+                        
+                        <p class="clinical-variability-note">
+                            <i class="fa-solid fa-triangle-exclamation"></i> <strong>Threshold Note:</strong> The cut-off thresholds above were derived using the <em>shorter diagonal diameter</em> as the denominator. Diagnosis is clinical; values can vary depending on age, sex, and race/ethnicity.
+                        </p>
+                    </div>
+
+                    <!-- CLINICAL INSIGHTS & LITERATURE REFERENCE BOX -->
+                    <div class="clinical-insights-card">
+                        <h4><i class="fa-solid fa-book-bookmark"></i> Literature &amp; Denominator Reference</h4>
+                        <p class="ref-summary-text">
+                            Regardless of whether the <em>shorter</em> or <em>longer</em> diagonal diameter is chosen as the denominator, research demonstrates little practical clinical difference in threshold values.
+                        </p>
+                        <div class="citation-box">
+                            <strong>Reference Citation:</strong><br>
+                            Miyabayashi H, Saito K, Kato R, Noto T, Nagano N, Morioka I. <em>Denominator of Cranial Vault Asymmetry Index: Choosing Between Longer and Shorter Diagonal Lengths.</em> J Craniofac Surg. 2023;33(5):e369. doi:<a href="https://doi.org/10.1097/SCS.0000000000009263" target="_blank" rel="noopener">10.1097/SCS.0000000000009263</a>
+                        </div>
+                    </div>
+
+                    <div class="clinical-insights-card">
+                        <h4><i class="fa-solid fa-notes-medical"></i> Critical Clinical Points</h4>
+                        <ul>
+                            <li><strong>Scaphocephaly Alert:</strong> A normal CVAI does <em>not</em> reassure in scaphocephaly. Sagittal synostosis is symmetric, so CVAI remains normal while CI falls.</li>
+                            <li><strong>Morphology Differentiation:</strong> CVAI cannot distinguish deformational plagiocephaly (parallelogram deformation) from synostotic plagiocephaly (trapezoid deformation). Morphological clinical examination is required.</li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- CALCULATOR PANEL (CVAI) -->
+                <section class="panel calculator-panel">
+                    <div class="table-container">
+                        <div class="table-header-title">
+                            <h3><i class="fa-solid fa-timeline"></i> Longitudinal CVAI &amp; Asymmetry Measurements</h3>
+                            <span class="badge-total-rows">Total Scans: <strong id="cvai-rows-count">5</strong></span>
+                        </div>
+
+                        <div class="table-scroll">
+                            <table class="evans-table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-tp">Scan #</th>
+                                        <th class="col-date">Date</th>
+                                        <th class="col-context">Context (Meta)</th>
+                                        <th class="col-measurement">Shorter diagonal diameter</th>
+                                        <th class="col-measurement">Longer diagonal diameter</th>
+                                        <th class="col-result">CVA (|B-A|)</th>
+                                        <th class="col-result">CVAI (%)</th>
+                                        <th class="col-status">Classification</th>
+                                        <th class="col-action">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cvai-table-body">
+                                    <!-- Dynamic Rows Generated via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="table-footer-controls">
+                            <button type="button" id="btn-add-cvai-row" class="btn btn-add-tp">
+                                <i class="fa-solid fa-plus-circle"></i> Add Time Point
+                            </button>
+                            <span class="helper-text"><i class="fa-solid fa-circle-info"></i> Enter Shorter &amp; Longer diagonals (at 30&deg; to midline). CVAI &amp; CVA compute live with or without dates.</span>
+                        </div>
+                    </div>
+
+                    <!-- KPI SUMMARY CARDS (CVAI) -->
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <span class="kpi-title"><i class="fa-solid fa-hashtag"></i> Total Scans Computed</span>
+                            <span class="kpi-value" id="cvai-kpi-count">0</span>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-title"><i class="fa-solid fa-chart-line"></i> Baseline CVAI (%)</span>
+                            <span class="kpi-value" id="cvai-kpi-baseline">--</span>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-title"><i class="fa-solid fa-flag-checkered"></i> Latest CVAI (%)</span>
+                            <span class="kpi-value" id="cvai-kpi-latest">--</span>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-title"><i class="fa-solid fa-arrow-trend-down"></i> Total Change (&Delta; CVAI)</span>
+                            <span class="kpi-value" id="cvai-kpi-delta">--</span>
+                        </div>
+                    </div>
+
+                    <!-- LONGITUDINAL BAR CHART (CVAI) -->
+                    <div class="chart-section">
+                        <div class="chart-header">
+                            <h3><i class="fa-solid fa-chart-column"></i> Longitudinal CVAI Asymmetry Bar Graph</h3>
+                            <span class="chart-sub">Visualizing plagiocephaly vault asymmetry index over time &amp; treatment</span>
+                        </div>
+                        <div class="chart-body">
+                            <div id="cvai-chart-placeholder" class="chart-placeholder">
+                                <i class="fa-solid fa-chart-bar placeholder-icon"></i>
+                                <p>Enter measurements into at least 1 time point row to generate the CVAI Bar Graph.</p>
+                            </div>
+                            <div id="cvai-chart-container" class="chart-canvas-wrapper hidden">
+                                <canvas id="cvaiChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- FOOTER & COPYRIGHT -->
+        <footer class="app-footer">
+            <div class="footer-stats-bar">
+                <div class="stat-badge" title="Total global app views across all devices worldwide">
+                    <i class="fa-solid fa-eye"></i>
+                    <span>App Views:</span>
+                    <strong id="counter-views">...</strong>
+                </div>
+                <div class="stat-badge" title="Total global CI & CVAI calculations performed">
+                    <i class="fa-solid fa-calculator"></i>
+                    <span>Calculations Done:</span>
+                    <strong id="counter-calcs">...</strong>
+                </div>
+            </div>
+            
+            <p class="copyright-notice">
+                &copy; 2026 <strong>Dr G Narenthiran MB Ch FEBNS FRCS(SN)</strong> (<a href="mailto:g_narnethiran@hotmail.com">g_narnethiran@hotmail.com</a>) | Dedicated to my mother Mrs Nirmaladevy Ganesalingam BSc. All rights reserved. Designed for Pediatric Neurosurgery, Craniofacial Surgery &amp; Radiology practice.
+            </p>
+            
+            <p class="mandatory-disclaimer">
+                <strong>Important Notice:</strong> Please check the calculations manually. <em>Disclaimer:</em> This tool is not intended for clinical decision support; it is for educational reference in patients with craniosynostosis and cranial deformities. Final diagnosis and treatment decisions require correlation with comprehensive clinical examination and multiplanar radiological/anthropometric assessment. Threshold values provided can vary depending on the age, sex, and race/ethnicity of the child.
+            </p>
+        </footer>
+    </div>
+
+    <!-- Application JavaScript File -->
+    <script src="script.js?v=4.0"></script>
+</body>
+</html>

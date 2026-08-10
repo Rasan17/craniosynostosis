@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Technical Summary - Cranial Index &amp; Cranial Vault Asymmetry Index Calculator Pro</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 18mm;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            line-height: 1.5;
+            margin: 0;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+        .header {
+            border-bottom: 3px solid #06b6d4;
+            padding-bottom: 14px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #0f172a;
+            font-size: 21pt;
+            margin: 0 0 6px 0;
+            font-weight: 700;
+        }
+        .meta {
+            font-size: 10.5pt;
+            color: #475569;
+        }
+        .meta strong {
+            color: #0f172a;
+        }
+        .url-badge {
+            display: inline-block;
+            background-color: #ecfeff;
+            color: #0891b2;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 9.5pt;
+            margin-top: 4px;
+        }
+        h2 {
+            color: #0891b2;
+            font-size: 14pt;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+            margin-top: 22px;
+            margin-bottom: 12px;
+        }
+        h3 {
+            color: #1e293b;
+            font-size: 11.5pt;
+            margin-top: 14px;
+            margin-bottom: 6px;
+        }
+        p {
+            font-size: 10pt;
+            margin-bottom: 10px;
+        }
+        ul, ol {
+            font-size: 10pt;
+            margin-top: 4px;
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0;
+            font-size: 9.5pt;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 7px 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            background-color: #f1f5f9;
+            color: #0891b2;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 9pt;
+        }
+        .code-block {
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 9pt;
+            white-space: pre-wrap;
+            margin: 10px 0;
+        }
+        .note-box {
+            background-color: #fff1f2;
+            border: 1px solid #fecdd3;
+            border-left: 4px solid #f43f5e;
+            padding: 10px 12px;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            color: #881337;
+            margin: 12px 0;
+        }
+        .ref-box {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-left: 4px solid #16a34a;
+            padding: 10px 12px;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            color: #14532d;
+            margin: 12px 0;
+        }
+        .footer {
+            margin-top: 30px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 10px;
+            font-size: 8.5pt;
+            color: #64748b;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Technical Summary: Cranial Index &amp; Cranial Vault Asymmetry Index Calculator Pro</h1>
+        <div class="meta">
+            <strong>Supervising Developer &amp; Author:</strong> Dr G Narenthiran MB Ch FEBNS FRCS(SN) (<a href="mailto:g_narnethiran@hotmail.com">g_narnethiran@hotmail.com</a>) | Dedicated to my mother Mrs Nirmaladevy Ganesalingam BSc<br>
+            <strong>Copyright Attribution:</strong> &copy; 2026 Dr G Narenthiran MB Ch FEBNS FRCS(SN) (g_narnethiran@hotmail.com). All rights reserved.<br>
+            <strong>Directory Location:</strong> <span class="url-badge">/cranial_index/</span>
+        </div>
+    </div>
+
+    <h2>📐 Part 1: Clinical Indices &amp; Mathematical Formulas</h2>
+    
+    <h3>1. Cranial Index (CI) - Proportions (Brachycephaly / Scaphocephaly)</h3>
+    <p>Calculated by dividing maximal Biparietal Diameter (BPD) by Occipitofrontal Diameter (OFD):</p>
+    <div class="code-block">\text{CI} = \frac{\text{Biparietal Diameter (BPD)}}{\text{Occipitofrontal Diameter (OFD)}}</div>
+    <ul>
+        <li><strong>Scaphocephaly / Dolichocephaly:</strong> CI &lt; 0.75 (&lt; 75.00%)</li>
+        <li><strong>Mesocephaly (Normal):</strong> 0.75 &le; CI &le; 0.85 (75.00% – 85.00%)</li>
+        <li><strong>Brachycephaly:</strong> CI &gt; 0.85 (&gt; 85.00%)</li>
+        <li><strong>Severe Brachycephaly:</strong> CI &gt; 0.90 (&gt; 90.00%)</li>
+    </ul>
+
+    <h3>2. Cranial Vault Asymmetry Index (CVAI) - Dynamic Denominator Option</h3>
+    <p>Calculated from <strong>Shorter diagonal diameter</strong> and <strong>Longer diagonal diameter</strong> taken at 30&deg; to the midline sagittal axis:</p>
+    <div class="code-block">\text{CVAI (\%)} = \frac{|\text{Longer Diagonal} - \text{Shorter Diagonal}|}{\text{Chosen Denominator Diagonal}} \times 100</div>
+    <ul>
+        <li><strong>Standard Denominator (Shorter Diagonal):</strong> Default convention used for standard clinical threshold bands.</li>
+        <li><strong>Alternative Denominator (Longer Diagonal):</strong> Available via real-time user selection dropdown.</li>
+        <li><strong>Normal Symmetry:</strong> CVAI &lt; 3.5%</li>
+        <li><strong>Mild Plagiocephaly:</strong> 3.5% &le; CVAI &lt; 6.25%</li>
+        <li><strong>Moderate Plagiocephaly:</strong> 6.25% &le; CVAI &le; 8.75%</li>
+        <li><strong>Severe Plagiocephaly:</strong> CVAI &gt; 8.75%</li>
+        <li><strong>CVA (Unnormalised Difference):</strong> \text{CVA} = |\text{Longer} - \text{Shorter}| (in mm/cm)</li>
+    </ul>
+
+    <div class="ref-box">
+        <strong>Denominator Literature Reference &amp; Finding:</strong><br>
+        Regardless of whether the <em>shorter</em> or <em>longer</em> diagonal diameter is used as the denominator, research demonstrates little practical clinical difference in threshold values.<br>
+        <em>Miyabayashi H, Saito K, Kato R, Noto T, Nagano N, Morioka I. Denominator of Cranial Vault Asymmetry Index: Choosing Between Longer and Shorter Diagonal Lengths. J Craniofac Surg. 2023;33(5):e369. doi:10.1097/SCS.0000000000009263</em>
+    </div>
+
+    <div class="note-box">
+        <strong>Mandatory Clinical Threshold Note:</strong> The conventional cut-off thresholds above were derived using the shorter diagonal diameter as the denominator. Diagnosis is clinical; values can vary depending on age, sex, and race/ethnicity.
+    </div>
+
+    <h2>⚠️ Part 2: Critical Clinical Points</h2>
+    <ul>
+        <li><strong>Scaphocephaly Reassurance Alert:</strong> A normal CVAI does <em>not</em> reassure in scaphocephaly. Sagittal synostosis is a symmetric deformity, so CVAI remains normal while CI falls.</li>
+        <li><strong>Morphology vs. Metric:</strong> CVAI cannot distinguish deformational plagiocephaly (parallelogram deformation) from synostotic plagiocephaly / unicoronal / lambdoid synostosis (trapezoid deformation). Morphological clinical examination is required.</li>
+    </ul>
+
+    <h2>📁 Repository Files Summary</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>File Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>index.html</code></td>
+                <td>Structural HTML5 layout, Pro title, dual-tab bar, relabeled Shorter/Longer diagonal columns, denominator dropdown, and Miyabayashi et al. reference citation.</td>
+            </tr>
+            <tr>
+                <td><code>style.css</code></td>
+                <td>Glassmorphism dark aesthetic, denominator selector box styling, literature citation formatting, and active-tab <code>@media print</code> print rules.</td>
+            </tr>
+            <tr>
+                <td><code>script.js</code></td>
+                <td>Dual-tab state manager, dynamic denominator CVAI calculation engine, CounterAPI v2 global counter integration, and Chart.js bar renderers.</td>
+            </tr>
+            <tr>
+                <td><code>cranial_diagram.jpg</code></td>
+                <td>Schematic vertex view showing glabella, opisthocranion, BPD, and OFD diameters.</td>
+            </tr>
+            <tr>
+                <td><code>cvai_diagram.png</code></td>
+                <td>Updated schematic vertex view showing 30&deg; obliques labeled A (Shorter) and B (Longer).</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer">
+        Please check the calculations manually. Disclaimer: This tool is not intended for clinical decision support; it is for educational reference in patients with craniosynostosis and cranial deformities. Final diagnosis and treatment decisions require correlation with comprehensive clinical examination and multiplanar radiological/anthropometric assessment. Threshold values provided can vary depending on the age, sex, and race/ethnicity of the child.
+    </div>
+
+</body>
+</html>

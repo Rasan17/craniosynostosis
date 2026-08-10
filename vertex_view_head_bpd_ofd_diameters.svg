@@ -1,0 +1,63 @@
+<svg viewBox="0 0 760 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ttl dsc" font-family="system-ui, -apple-system, sans-serif" style="">
+  <title id="ttl" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Vertex view of a normal head showing the biparietal and occipitofrontal diameters</title>
+  <desc id="dsc" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">A head seen from directly above, anterior at the top with the nose visible. A transverse line marks the biparietal diameter across the widest point at the parietal eminences. A midline anteroposterior line marks the occipitofrontal diameter from glabella to opisthocranion.</desc>
+
+  <defs>
+    <marker id="ahA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,1 L9,5 L0,9 z" fill="var(--text-accent)"/>
+    </marker>
+    <marker id="ahP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,1 L9,5 L0,9 z" fill="var(--text-primary)"/>
+    </marker>
+  </defs>
+
+  <text x="330" y="46" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="2.5" fill="var(--text-muted)" style="fill:rgb(137, 135, 129);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:13px;font-weight:600;text-anchor:middle;dominant-baseline:auto">ANTERIOR</text>
+  <text x="330" y="712" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="2.5" fill="var(--text-muted)" style="fill:rgb(137, 135, 129);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:13px;font-weight:600;text-anchor:middle;dominant-baseline:auto">POSTERIOR</text>
+
+  
+  <path d="M504,345 C527,358 534,388 526,410 C522,419 514,417 513,409 C519,388 515,364 500,352 Z" fill="var(--surface-2)" stroke="var(--border-stronger)" stroke-width="2" stroke-linejoin="round" style="fill:rgb(255, 255, 255);stroke:color(srgb 0.0431373 0.0431373 0.0431373 / 0.4);color:rgb(11, 11, 11);stroke-width:2px;stroke-linecap:butt;stroke-linejoin:round;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <path d="M156,345 C133,358 126,388 134,410 C138,419 146,417 147,409 C141,388 145,364 160,352 Z" fill="var(--surface-2)" stroke="var(--border-stronger)" stroke-width="2" stroke-linejoin="round" style="fill:rgb(255, 255, 255);stroke:color(srgb 0.0431373 0.0431373 0.0431373 / 0.4);color:rgb(11, 11, 11);stroke-width:2px;stroke-linecap:butt;stroke-linejoin:round;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  
+  <path d="M313,154 C318,128 322,112 330,103 C338,112 342,128 347,154 Z" fill="var(--surface-2)" stroke="var(--border-stronger)" stroke-width="2" stroke-linejoin="round" style="fill:rgb(255, 255, 255);stroke:color(srgb 0.0431373 0.0431373 0.0431373 / 0.4);color:rgb(11, 11, 11);stroke-width:2px;stroke-linecap:butt;stroke-linejoin:round;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  
+  <path d="M330,150 C385,151 437,190 464,246 C493,304 510,352 510,400 C510,472 481,532 430,572 C399,596 365,611 330,610 C295,611 261,596 230,572 C179,532 150,472 150,400 C150,352 167,304 196,246 C223,190 275,151 330,150 Z" fill="var(--surface-1)" stroke="var(--border-stronger)" stroke-width="2.5" style="fill:rgb(252, 252, 251);stroke:color(srgb 0.0431373 0.0431373 0.0431373 / 0.4);color:rgb(11, 11, 11);stroke-width:2.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  
+  <line x1="330" y1="154" x2="330" y2="606" stroke="var(--text-primary)" stroke-width="3" marker-start="url(#ahP)" marker-end="url(#ahP)" style="fill:rgb(0, 0, 0);stroke:rgb(11, 11, 11);color:rgb(11, 11, 11);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  
+  <line x1="154" y1="400" x2="506" y2="400" stroke="var(--text-accent)" stroke-width="3" marker-start="url(#ahA)" marker-end="url(#ahA)" style="fill:rgb(0, 0, 0);stroke:rgb(24, 79, 149);color:rgb(11, 11, 11);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  
+  <circle cx="330" cy="150" r="5" fill="var(--text-primary)" style="fill:rgb(11, 11, 11);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <circle cx="330" cy="610" r="5" fill="var(--text-primary)" style="fill:rgb(11, 11, 11);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <circle cx="150" cy="400" r="5" fill="var(--text-accent)" style="fill:rgb(24, 79, 149);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <circle cx="510" cy="400" r="5" fill="var(--text-accent)" style="fill:rgb(24, 79, 149);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  
+  <rect x="238" y="228" width="86" height="30" rx="4" fill="var(--surface-0)" style="fill:rgb(249, 249, 247);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="316" y="250" text-anchor="end" font-size="21" font-weight="700" fill="var(--text-primary)" style="fill:rgb(11, 11, 11);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:21px;font-weight:700;text-anchor:end;dominant-baseline:auto">OFD</text>
+
+  
+  <line x1="516" y1="400" x2="556" y2="400" stroke="var(--text-accent)" stroke-width="1.5" style="fill:rgb(0, 0, 0);stroke:rgb(24, 79, 149);color:rgb(11, 11, 11);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="564" y="394" font-size="21" font-weight="700" fill="var(--text-accent)" style="fill:rgb(24, 79, 149);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:21px;font-weight:700;text-anchor:start;dominant-baseline:auto">BPD</text>
+  <text x="564" y="418" font-size="13" fill="var(--text-secondary)" style="fill:rgb(82, 81, 78);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:13px;font-weight:400;text-anchor:start;dominant-baseline:auto">parietal eminences</text>
+
+  
+  <line x1="326" y1="151" x2="212" y2="118" stroke="var(--border-stronger)" stroke-width="1.5" style="fill:rgb(0, 0, 0);stroke:color(srgb 0.0431373 0.0431373 0.0431373 / 0.4);color:rgb(11, 11, 11);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="204" y="116" text-anchor="end" font-size="14" fill="var(--text-secondary)" style="fill:rgb(82, 81, 78);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:14px;font-weight:400;text-anchor:end;dominant-baseline:auto">glabella</text>
+  <text x="204" y="134" text-anchor="end" font-size="12" fill="var(--text-muted)" style="fill:rgb(137, 135, 129);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:12px;font-weight:400;text-anchor:end;dominant-baseline:auto">frontal pole</text>
+
+  
+  <line x1="326" y1="609" x2="212" y2="656" stroke="var(--border-stronger)" stroke-width="1.5" style="fill:rgb(0, 0, 0);stroke:color(srgb 0.0431373 0.0431373 0.0431373 / 0.4);color:rgb(11, 11, 11);stroke-width:1.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="204" y="654" text-anchor="end" font-size="14" fill="var(--text-secondary)" style="fill:rgb(82, 81, 78);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:14px;font-weight:400;text-anchor:end;dominant-baseline:auto">opisthocranion</text>
+  <text x="204" y="672" text-anchor="end" font-size="12" fill="var(--text-muted)" style="fill:rgb(137, 135, 129);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:12px;font-weight:400;text-anchor:end;dominant-baseline:auto">occipital pole</text>
+
+  
+  <line x1="60" y1="748" x2="96" y2="748" stroke="var(--text-accent)" stroke-width="3" style="fill:rgb(0, 0, 0);stroke:rgb(24, 79, 149);color:rgb(11, 11, 11);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="108" y="753" font-size="14" fill="var(--text-secondary)" style="fill:rgb(82, 81, 78);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:14px;font-weight:400;text-anchor:start;dominant-baseline:auto"><tspan font-weight="700" fill="var(--text-accent)" style="fill:rgb(24, 79, 149);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:14px;font-weight:700;text-anchor:start;dominant-baseline:auto">BPD</tspan>  biparietal diameter — greatest transverse width</text>
+  <line x1="60" y1="778" x2="96" y2="778" stroke="var(--text-primary)" stroke-width="3" style="fill:rgb(0, 0, 0);stroke:rgb(11, 11, 11);color:rgb(11, 11, 11);stroke-width:3px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="108" y="783" font-size="14" fill="var(--text-secondary)" style="fill:rgb(82, 81, 78);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:14px;font-weight:400;text-anchor:start;dominant-baseline:auto"><tspan font-weight="700" fill="var(--text-primary)" style="fill:rgb(11, 11, 11);stroke:none;color:rgb(11, 11, 11);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:system-ui, -apple-system, sans-serif;font-size:14px;font-weight:700;text-anchor:start;dominant-baseline:auto">OFD</tspan>  occipitofrontal diameter — greatest AP length</text>
+</svg>
