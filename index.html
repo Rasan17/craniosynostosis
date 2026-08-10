@@ -50,7 +50,7 @@
             </div>
         </header>
 
-        <!-- DUAL-TAB NAVIGATION BAR -->
+        <!-- TRIPLE-TAB NAVIGATION BAR -->
         <nav class="tab-navigation">
             <button class="nav-tab active" id="tab-btn-ci" data-tab="tab-ci">
                 <i class="fa-solid fa-head-side-virus"></i>
@@ -61,6 +61,11 @@
                 <i class="fa-solid fa-vector-square"></i>
                 <span>Cranial Vault Asymmetry Index (CVAI)</span>
                 <small>Plagiocephaly &amp; Asymmetry</small>
+            </button>
+            <button class="nav-tab" id="tab-btn-hc" data-tab="tab-hc">
+                <i class="fa-solid fa-tape"></i>
+                <span>Head Circumference Centile (WHO)</span>
+                <small>Growth Chart &amp; Centiles (0–60m)</small>
             </button>
         </nav>
 
@@ -85,13 +90,55 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="unit-select"><i class="fa-solid fa-ruler-combined"></i> Measurement Units:</label>
-                <select id="unit-select">
-                    <option value="mm">Millimeters (mm)</option>
-                    <option value="cm">Centimeters (cm)</option>
-                </select>
+                <label for="head-circumference"><i class="fa-solid fa-tape"></i> Head Circumference (cm):</label>
+                <input type="number" id="head-circumference" step="0.1" min="0" placeholder="e.g. 41.5" aria-label="Head Circumference in cm">
+            </div>
+            <div class="form-group">
+                <label for="head-circ-date"><i class="fa-solid fa-calendar-day"></i> Head Circ. Date:</label>
+                <input type="date" id="head-circ-date" aria-label="Head Circumference Date">
+            </div>
+            <div class="form-group">
+                <label for="top-hc-age"><i class="fa-solid fa-child"></i> Age (months):</label>
+                <input type="number" id="top-hc-age" step="0.1" min="0" max="60" placeholder="e.g. 6.0" aria-label="Age in months">
+            </div>
+            <div class="form-group">
+                <label><i class="fa-solid fa-venus-mars"></i> Gender:</label>
+                <div class="gender-radio-group" style="display: flex; gap: 12px; align-items: center; background: rgba(15, 23, 42, 0.6); padding: 7px 14px; border: 1px solid var(--border-dark); border-radius: var(--radius-sm); height: 42px;">
+                    <label class="radio-label" style="display: flex; align-items: center; gap: 5px; cursor: pointer; color: var(--text-primary); font-size: 13px; font-weight: 500;">
+                        <input type="radio" name="top-hc-gender-radio" value="boy" checked style="accent-color: var(--primary-cyan); cursor: pointer;">
+                        <i class="fa-solid fa-mars" style="color: #38bdf8;"></i> Male
+                    </label>
+                    <label class="radio-label" style="display: flex; align-items: center; gap: 5px; cursor: pointer; color: var(--text-primary); font-size: 13px; font-weight: 500;">
+                        <input type="radio" name="top-hc-gender-radio" value="girl" style="accent-color: #ec4899; cursor: pointer;">
+                        <i class="fa-solid fa-venus" style="color: #ec4899;"></i> Female
+                    </label>
+                </div>
+            </div>
+            <div class="form-group form-group-btn">
+                <label>&nbsp;</label>
+                <button type="button" id="btn-top-hc-submit" class="btn btn-primary btn-submit-top" onclick="submitTopHcForm()">
+                    <i class="fa-solid fa-paper-plane"></i> Submit &amp; Plot Centile
+                </button>
             </div>
         </section>
+
+        <!-- LIVE WHO CENTILE RESULT BANNER (INSTANT DISPLAY ON TOP) -->
+        <div id="top-hc-result-banner" class="hidden" style="margin-top: 12px; padding: 14px 20px; background: rgba(15, 23, 42, 0.9); border: 1.5px solid var(--primary-cyan); border-radius: var(--radius-md); text-align: center; font-weight: 600; font-size: 15px; color: var(--primary-cyan); box-shadow: 0 4px 15px rgba(6, 182, 212, 0.25);">
+            <i class="fa-solid fa-chart-line"></i> <span id="top-hc-banner-text">Enter Age and Circumference to calculate WHO Centile.</span>
+        </div>
+
+        <!-- TOP WHO GROWTH CHART CONTAINER (VISIBLE DIRECTLY ON TOP SCREEN) -->
+        <div id="top-hc-chart-section" class="panel hidden" style="margin-top: 14px; margin-bottom: 20px; padding: 18px; border: 1.5px solid var(--primary-cyan); background: rgba(15, 23, 42, 0.95); box-shadow: 0 8px 30px rgba(6, 182, 212, 0.25);">
+            <div class="chart-header" style="margin-bottom: 12px; text-align: center;">
+                <h3 style="color: var(--primary-cyan); font-size: 17px; margin-bottom: 4px;"><i class="fa-solid fa-chart-line"></i> WHO Head Circumference Growth Chart (0–60 Months)</h3>
+                <span class="chart-sub" style="color: #94a3b8; font-size: 13px;">Comparing patient measurement against WHO 3rd, 15th, 50th, 85th &amp; 97th centiles</span>
+            </div>
+            <div class="chart-body">
+                <div class="chart-canvas-wrapper" style="height: 380px;">
+                    <canvas id="topHcChart"></canvas>
+                </div>
+            </div>
+        </div>
 
         <!-- TAB 1: CRANIAL INDEX (CI) CALCULATOR CONTENT -->
         <div id="tab-ci" class="tab-content active">
@@ -368,6 +415,138 @@
                     </div>
                 </section>
             </main>
+        <!-- TAB 3: HEAD CIRCUMFERENCE CENTILE & WHO GROWTH CHART CONTENT -->
+        <div id="tab-hc" class="tab-content">
+            <main class="main-content">
+                <!-- CONTROLS & WHO CENTILE PANEL (HC) -->
+                <aside class="panel anatomy-panel">
+                    <div class="panel-header">
+                        <h2><i class="fa-solid fa-tape"></i> Head Circumference &amp; Centile (WHO)</h2>
+                    </div>
+
+                    <div class="form-group denominator-select-box">
+                        <label><i class="fa-solid fa-venus-mars"></i> Patient Gender:</label>
+                        <div class="gender-radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="hc-gender-radio" value="boy" checked>
+                                <span><i class="fa-solid fa-mars" style="color: #38bdf8;"></i> Male</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="hc-gender-radio" value="girl">
+                                <span><i class="fa-solid fa-venus" style="color: #ec4899;"></i> Female</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hc-age-months"><i class="fa-solid fa-child"></i> Age of Patient (in months):</label>
+                        <input type="number" id="hc-age-months" step="0.1" min="0" max="60" placeholder="e.g. 6.0" aria-label="Age in months">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hc-value-cm"><i class="fa-solid fa-ruler"></i> Head Circumference (cm):</label>
+                        <input type="number" id="hc-value-cm" step="0.1" min="20" max="65" placeholder="e.g. 43.5" aria-label="Head Circumference in cm">
+                    </div>
+
+                    <button type="button" id="btn-hc-submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 4px;" onclick="submitTopHcForm()">
+                        <i class="fa-solid fa-calculator"></i> Calculate Centile &amp; Plot on Graph
+                    </button>
+
+                    <!-- CENTILE RESULT DISPLAY CARD -->
+                    <div class="formula-box">
+                        <h3><i class="fa-solid fa-chart-line"></i> WHO Centile Result</h3>
+                        <div class="kpi-grid" style="grid-template-columns: 1fr 1fr; margin-top: 10px;">
+                            <div class="kpi-card" style="padding: 12px;">
+                                <span class="kpi-title">Calculated Centile</span>
+                                <span class="kpi-value" id="hc-kpi-centile" style="font-size: 20px; color: var(--primary-cyan);">--</span>
+                            </div>
+                            <div class="kpi-card" style="padding: 12px;">
+                                <span class="kpi-title">Z-Score (SD)</span>
+                                <span class="kpi-value" id="hc-kpi-zscore" style="font-size: 20px;">--</span>
+                            </div>
+                        </div>
+                        <div id="hc-status-badge" style="margin-top: 12px; text-align: center;">
+                            <span class="badge badge-empty"><i class="fa-solid fa-minus"></i> Enter Age &amp; Circumference</span>
+                        </div>
+                    </div>
+
+                    <div class="thresholds-box">
+                        <h3><i class="fa-solid fa-list-check"></i> WHO Growth Standards (0–60 Months)</h3>
+                        <ul class="threshold-list">
+                            <li class="t-severe">
+                                <span class="t-badge"><i class="fa-solid fa-arrow-up"></i> &gt; 97th Centile (+2 SD)</span>
+                                <span class="t-desc">Macrocephaly / Rapid Vault Growth</span>
+                            </li>
+                            <li class="t-normal">
+                                <span class="t-badge"><i class="fa-solid fa-check-double"></i> 3rd - 97th Centile (-2 to +2 SD)</span>
+                                <span class="t-desc">Normal Head Circumference Range</span>
+                            </li>
+                            <li class="t-severe">
+                                <span class="t-badge"><i class="fa-solid fa-arrow-down"></i> &lt; 3rd Centile (-2 SD)</span>
+                                <span class="t-desc">Microcephaly / Restricted Vault Growth</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="clinical-insights-card">
+                        <h4><i class="fa-solid fa-book-bookmark"></i> Reference Standard</h4>
+                        <p class="ref-summary-text">
+                            WHO Child Growth Standards (Head Circumference-for-age, 0 to 60 completed months). World Health Organization Multicentre Growth Reference Study Group.
+                        </p>
+                    </div>
+                </aside>
+
+                <!-- CALCULATOR PANEL & WHO GROWTH CHART (HC) -->
+                <section class="panel calculator-panel">
+                    <div class="table-container">
+                        <div class="table-header-title">
+                            <h3><i class="fa-solid fa-timeline"></i> Longitudinal Head Circumference Measurements</h3>
+                            <span class="badge-total-rows">Total Measurements: <strong id="hc-rows-count">5</strong></span>
+                        </div>
+
+                        <div class="table-scroll">
+                            <table class="evans-table">
+                                <thead>
+                                    <tr>
+                                        <th class="col-tp">Scan #</th>
+                                        <th class="col-date">Date</th>
+                                        <th class="col-context">Context (Meta)</th>
+                                        <th class="col-measurement">Age (months)</th>
+                                        <th class="col-measurement">Head Circ. (cm)</th>
+                                        <th class="col-result">Centile (%)</th>
+                                        <th class="col-result">Z-Score</th>
+                                        <th class="col-status">Classification</th>
+                                        <th class="col-action">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="hc-table-body">
+                                    <!-- Dynamic Rows Generated via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="table-footer-controls">
+                            <button type="button" id="btn-add-hc-row" class="btn btn-add-tp">
+                                <i class="fa-solid fa-plus-circle"></i> Add Growth Point
+                            </button>
+                            <span class="helper-text"><i class="fa-solid fa-circle-info"></i> Enter Age (months) and Head Circumference (cm). Centiles &amp; trajectory plot live.</span>
+                        </div>
+                    </div>
+
+                    <!-- WHO GROWTH CHART CANVAS CONTAINER -->
+                    <div class="chart-section">
+                        <div class="chart-header">
+                            <h3><i class="fa-solid fa-chart-line"></i> WHO Head Circumference Growth Chart (0–60 Months)</h3>
+                            <span class="chart-sub">Comparing patient trajectory against WHO 3rd, 15th, 50th, 85th &amp; 97th centiles</span>
+                        </div>
+                        <div class="chart-body">
+                            <div id="hc-chart-container" class="chart-canvas-wrapper" style="height: 380px;">
+                                <canvas id="hcChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
         </div>
 
         <!-- FOOTER & COPYRIGHT -->
@@ -396,6 +575,6 @@
     </div>
 
     <!-- Application JavaScript File -->
-    <script src="script.js?v=5.0"></script>
+    <script src="script.js?v=21.0"></script>
 </body>
 </html>

@@ -324,6 +324,34 @@ h1, h2, h3, h4, .brand-titles h1, .kpi-value {
     margin-bottom: 6px;
 }
 
+.gender-radio-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 6px;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.radio-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.radio-label input[type="radio"] {
+    accent-color: var(--primary-cyan);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
 .formula-box {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
@@ -500,7 +528,7 @@ h1, h2, h3, h4, .brand-titles h1, .kpi-value {
 /* DEMOGRAPHICS BAR */
 .patient-demographics-bar {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     gap: 16px;
     background: var(--panel-bg);
     border: 1px solid var(--panel-border);
@@ -512,6 +540,23 @@ h1, h2, h3, h4, .brand-titles h1, .kpi-value {
     display: flex;
     flex-direction: column;
     gap: 6px;
+}
+
+.form-group-btn {
+    justify-content: flex-end;
+}
+
+.btn-submit-top {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    justify-content: center;
+    white-space: nowrap;
+    background: linear-gradient(135deg, #06b6d4, #0284c7);
+    box-shadow: 0 3px 12px rgba(6, 182, 212, 0.4);
+    height: 38px;
+    margin-top: auto;
 }
 
 .form-group label {
@@ -909,12 +954,12 @@ h1, h2, h3, h4, .brand-titles h1, .kpi-value {
 /* PRINT STYLES - PRINTS ACTIVE TAB ONLY */
 @media print {
     body {
-        background: #ffffff;
-        color: #000000;
-        padding: 0;
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
     }
     .app-container {
-        max-width: 100%;
+        max-width: 100% !important;
     }
     .header-actions, .tab-navigation, .btn-add-tp, .col-action, .btn-icon-delete, .footer-stats-bar {
         display: none !important;
@@ -925,21 +970,47 @@ h1, h2, h3, h4, .brand-titles h1, .kpi-value {
     .tab-content.active {
         display: block !important;
     }
+    .patient-demographics-bar {
+        background: #f8fafc !important;
+        border: 1px solid #cbd5e1 !important;
+        color: #0f172a !important;
+        padding: 12px 18px !important;
+        margin-bottom: 16px !important;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 12px !important;
+        page-break-inside: avoid;
+    }
+    .patient-demographics-bar .form-group label {
+        color: #334155 !important;
+        font-weight: 700 !important;
+        font-size: 11px !important;
+    }
+    .patient-demographics-bar .form-group input,
+    .patient-demographics-bar .form-group select {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: 1px solid #94a3b8 !important;
+        font-weight: 600 !important;
+        font-size: 12px !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
     .panel {
-        background: #ffffff;
-        border: none;
-        box-shadow: none;
-        padding: 0;
+        background: #ffffff !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
     }
     .evans-table th {
-        background: #f1f5f9;
-        color: #000000;
+        background: #f1f5f9 !important;
+        color: #000000 !important;
     }
     .evans-table td {
-        color: #000000;
-        border-bottom: 1px solid #cbd5e1;
+        color: #000000 !important;
+        border-bottom: 1px solid #cbd5e1 !important;
     }
     .mandatory-disclaimer {
-        color: #475569;
+        color: #475569 !important;
     }
 }

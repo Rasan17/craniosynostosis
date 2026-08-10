@@ -184,6 +184,21 @@
         <strong>Mandatory Clinical Threshold Note:</strong> The conventional cut-off thresholds above were derived using the shorter diagonal diameter as the denominator. Diagnosis is clinical; values can vary depending on age, sex, and race/ethnicity.
     </div>
 
+    <h3>3. WHO Head Circumference Centiles &amp; Growth Chart (0 to 60 Months)</h3>
+    <p>Calculates exact Z-scores and centiles for pediatric patients based on the <strong>WHO Child Growth Standards</strong> (Birth to 5 Years / 60 Months):</p>
+    <div class="code-block">Z = \frac{\text{Head Circumference (cm)} - M(\text{age, gender})}{SD(\text{age, gender})}</div>
+    <ul>
+        <li><strong>Gender Standards:</strong> Separate WHO growth curve datasets for Boys and Girls.</li>
+        <li><strong>Percentile Calculation:</strong> Exact standard normal cumulative distribution function ($\Phi(Z)$) outputting centiles from 0.1% to 99.9%.</li>
+        <li><strong>Macrocephaly:</strong> Head Circumference &gt; 97th Centile (+2.0 SD)</li>
+        <li><strong>Normal Vault Range:</strong> 3rd Centile &le; Head Circumference &le; 97th Centile (-2.0 SD to +2.0 SD)</li>
+        <li><strong>Microcephaly:</strong> Head Circumference &lt; 3rd Centile (-2.0 SD)</li>
+    </ul>
+    <div class="ref-box">
+        <strong>Growth Standard Reference:</strong><br>
+        <em>World Health Organization. WHO Child Growth Standards: Head circumference-for-age, 0 to 60 completed months. Geneva: World Health Organization; 2006.</em>
+    </div>
+
     <h2>⚠️ Part 2: Critical Clinical Points</h2>
     <ul>
         <li><strong>Scaphocephaly Reassurance Alert:</strong> A normal CVAI does <em>not</em> reassure in scaphocephaly. Sagittal synostosis is a symmetric deformity, so CVAI remains normal while CI falls.</li>
@@ -201,7 +216,7 @@
         <tbody>
             <tr>
                 <td><code>index.html</code></td>
-                <td>Structural HTML5 layout, Pro title, dual-tab bar, relabeled Shorter/Longer diagonal columns, denominator dropdown, and Miyabayashi et al. reference citation.</td>
+                <td>Structural HTML5 layout, Pro title, dual-tab bar, Head Circumference (cm) &amp; Date picker textboxes, relabeled Shorter/Longer diagonal columns, denominator dropdown, and Miyabayashi et al. reference citation.</td>
             </tr>
             <tr>
                 <td><code>style.css</code></td>
