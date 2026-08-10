@@ -365,6 +365,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Custom Chart.js Plugin to draw numerical values directly above each bar
+    const barValueLabelsPlugin = {
+        id: 'barValueLabelsPlugin',
+        afterDatasetsDraw(chart) {
+            const { ctx } = chart;
+            chart.data.datasets.forEach((dataset, datasetIndex) => {
+                const meta = chart.getDatasetMeta(datasetIndex);
+                meta.data.forEach((bar, index) => {
+                    const val = dataset.data[index];
+                    if (val !== null && val !== undefined && !isNaN(val)) {
+                        ctx.save();
+                        ctx.font = 'bold 12px "Outfit", system-ui, -apple-system, sans-serif';
+                        ctx.fillStyle = '#38bdf8'; // Bright cyan text for high contrast & clarity
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'bottom';
+
+                        let labelText = '';
+                        if (chart.canvas.id === 'cvaiChart') {
+                            labelText = val.toFixed(2) + '%';
+                        } else {
+                            labelText = val.toFixed(2);
+                        }
+
+                        ctx.fillText(labelText, bar.x, bar.y - 6);
+                        ctx.restore();
+                    }
+                });
+            });
+        }
+    };
+
     function renderCiBarChart(sortedData) {
         const labels = sortedData.map((item, idx) => {
             const formattedDate = formatDateLabel(item.date);
@@ -382,15 +413,20 @@ document.addEventListener('DOMContentLoaded', () => {
             return 'rgba(239, 68, 68, 0.85)';
         });
 
+        const maxCiVal = Math.max(...dataValues, 0);
+        const yAxisMax = maxCiVal > 0 ? parseFloat(Math.min(1.05, maxCiVal * 1.12).toFixed(2)) : 1.0;
+
         if (ciChartInstance) {
             ciChartInstance.data.labels = labels;
             ciChartInstance.data.datasets[0].data = dataValues;
             ciChartInstance.data.datasets[0].backgroundColor = bgColors;
+            ciChartInstance.options.scales.y.max = yAxisMax;
             ciChartInstance.update();
         } else {
             const ctx = ciChartCanvas.getContext('2d');
             ciChartInstance = new Chart(ctx, {
                 type: 'bar',
+                plugins: [barValueLabelsPlugin],
                 data: {
                     labels: labels,
                     datasets: [{
@@ -418,7 +454,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     },
                     scales: {
-                        y: { min: 0.50, max: 1.00 }
+                        x: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#94a3b8', font: { family: 'Outfit', size: 12 } }
+                        },
+                        y: {
+                            min: 0.50,
+                            max: yAxisMax,
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#94a3b8', font: { family: 'Outfit', size: 12 } }
+                        }
                     }
                 }
             });
@@ -674,8 +719,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const maxCvaiVal = Math.max(...dataValues, 0);
-        // Maximum Y axis scale set to 10% higher than any of the calculated CVAI
-        const yAxisMax = maxCvaiVal > 0 ? parseFloat((maxCvaiVal * 1.10).toFixed(2)) : 10.0;
+        // Maximum Y axis scale set to 15% higher than max calculated CVAI for value label headroom
+        const yAxisMax = maxCvaiVal > 0 ? parseFloat((maxCvaiVal * 1.15).toFixed(2)) : 10.0;
 
         if (cvaiChartInstance) {
             cvaiChartInstance.data.labels = labels;
@@ -687,6 +732,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const ctx = cvaiChartCanvas.getContext('2d');
             cvaiChartInstance = new Chart(ctx, {
                 type: 'bar',
+                plugins: [barValueLabelsPlugin],
                 data: {
                     labels: labels,
                     datasets: [{
