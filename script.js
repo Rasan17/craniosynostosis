@@ -1,6 +1,6 @@
 /**
  * Cranial Index, Cranial Vault Asymmetry Index & WHO Head Circumference Centile Calculator Pro
- * Supervising Developer: Dr G Narenthiran MB Ch FEBNS FRCS(SN), g_narnethiran@hotmail.com
+ * Conceived, designed and tested by: Dr G Narenthiran FEBNS, FRCS(SN), g_narenthiran@hotmail.com
  * Copyright (c) 2026 Dr G Narenthiran. All rights reserved.
  * Dedicated to my mother Mrs Nirmaladevy Ganesalingam BSc
  */
